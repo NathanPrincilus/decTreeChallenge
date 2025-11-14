@@ -43,7 +43,13 @@ If you must stick to scikit-learn or related libraries, the category_encoders li
 - **Binary Encoding:** This is a hybrid approach that converts categories to binary code and then splits the digits into separate columns. It reduces dimensionality compared to one-hot encoding while preserving information and can work well with high cardinality data.
 - **Hashing Encoder:** This method applies a hashing function to map categories to a fixed, smaller number of dimensions, which can be useful for very high cardinality features and is memory efficient. 
 
+---
 
+## References
 
+1. DigitalOcean. "Best Python Libraries for Machine Learning in 2025." *DigitalOcean Community*. https://www.digitalocean.com/community/conceptual-articles/python-libraries-for-machine-learning
 
+2. GeeksforGeeks. "One Hot Encoding in Machine Learning." *GeeksforGeeks*. https://www.geeksforgeeks.org/machine-learning/ml-one-hot-encoding/
+
+3. Medium. "Smarter Ways to Encode Categorical Data for Machine Learning (Part 1 of 3)." *Medium*. https://medium.com/data-science/smarter-ways-to-encode-categorical-data-for-machine-learning-part-1-of-3-6dca2f71b159
 
