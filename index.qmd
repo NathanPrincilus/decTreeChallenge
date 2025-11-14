@@ -22,7 +22,26 @@ Zip code should be modelled as a categorical variable. Literally speaking, the p
 **Answer:**
 The package utilized by Python *scikit-learn* “does not support categorical variables for now” (https://scikit-learn.org/stable/modules/tree.html). It is better to utilize R over Python for modeling zip codes as categorical variables because R has statistical packages that have native support for handling categorical variables correctly and efficiently. R was built by statisticians for statistical analysis and treats categorical data as factors by design in most modeling packages. The native handling allows R to perform more efficient and statistically robust splits for the categorical data as it can evaluate all possible groupings of categories for a single split. Whereas Python’s scikit-learn requires the data to be in a numerical format. To use zip codes, we would have to use a pre-processing method like one-hot encoding. In conclusion, R does a better job of modelling zip code as a categorical variable than Python.
 
-**Suggestions for Implementing Decision Trees in Python With Prioper Categorical Handling**
+**Suggestions for Implementing Decision Trees in Python with Proper Categorical Handling**
+
+While Python's primary library, scikit-learn, requires numerical encoding (like one-hot encoding), several alternative Python libraries and encoding strategies exist for handling categorical variables in decision trees more natively or efficiently: 
+
+**Libraries with Native Categorical Support**
+
+For an experience closer to R's native handling, the following libraries support categorical features automatically within their tree-based models, including single decision trees or ensemble methods: 
+
+- **h2o:** The h2o package for Python handles categorical values automatically and efficiently without the need for manual one-hot encoding. You simply pass the raw categorical data to the h2o models.
+- **CatBoost:** This gradient boosting library is specifically designed to handle categorical features well and often provides superior performance with data heavy on such features. It has a scikit-learn compatible API and automates the encoding process internally.
+- **LightGBM:** Another powerful gradient boosting framework, LightGBM supports categorical features when explicitly told which columns are categorical (by setting the categorical_feature parameter). It handles the splitting internally.
+- **chefboost:** This lightweight library offers native support for categorical features in its decision tree implementations (ID3, C4.5, CART) and does not require preprocessing. 
+
+**Alternative Encoding Strategies (within the Scikit-learn ecosystem)**
+
+If you must stick to scikit-learn or related libraries, the category_encoders library offers sophisticated alternatives to one-hot encoding that can work well with tree-based models:
+
+- **Target Encoding (Mean Encoding):** This method replaces each category with the mean of the target variable for that category. It can be very effective for high-cardinality nominal data like zip codes but needs careful implementation (e.g., using cross-validation to prevent data leakage).
+- **Binary Encoding:** This is a hybrid approach that converts categories to binary code and then splits the digits into separate columns. It reduces dimensionality compared to one-hot encoding while preserving information and can work well with high cardinality data.
+- **Hashing Encoder:** This method applies a hashing function to map categories to a fixed, smaller number of dimensions, which can be useful for very high cardinality features and is memory efficient. 
 
 
 
