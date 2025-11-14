@@ -12,14 +12,19 @@ execute:
 
 > "The most important thing in communication is hearing what isn't said." - Peter Drucker
 
-1. **Numerical vs Categorical Encoding:** Zip codes can be modelled as numerical or categorical variables. Given what you know about zip codes and real estate prices, how should zip code be modelled, numerically or categorically?  Is zipcode an ordinal or non-ordinal variable?
+**Numerical vs Categorical Encoding:** Zip codes can be modelled as numerical or categorical variables. Given what you know about zip codes and real estate prices, how should zip code be modelled, numerically or categorically?  Is zipcode an ordinal or non-ordinal variable?
 
 **Answer:**
+Zip code should be modelled as a categorical variable. Literally speaking, the purpose of a zip code is to efficiently sort and deliver mail by providing a system that helps the postal service quickly route mail to its destination. They are *non-ordinal* variables. As a numerical variable, the numbers on of a zip code serve no purpose when analyzing real estate prices as 19804 – for example – is not greater than 19801. However, the prices of homes within the 19804 area may be higher on average than homes within the 19801 area. Zip codes represent geographic regions, not a continuous numerical scale. Ultimately, they have no mathematical meaning thus it would be better to model zip codes categorically. 
+
+**R vs Python Implementation Differences:** When modelling zip code as a categorical variable, the output tree and feature importance would differ quite significantly had you used R as opposed to Python. Investigate why this is the case.  What does R offer that Python does not? Which language would you say does a better job of modelling zip code as a categorical variable? Can you quote the documentation at [https://scikit-learn.org/stable/modules/tree.html](https://scikit-learn.org/stable/modules/tree.html) suggesting a weakness in the Python implementation? If so, please provide a quote from the documentation.
+
+**Answer:**
+The package utilized by Python *scikit-learn* “does not support categorical variables for now” (https://scikit-learn.org/stable/modules/tree.html). It is better to utilize R over Python for modeling zip codes as categorical variables because R has statistical packages that have native support for handling categorical variables correctly and efficiently. R was built by statisticians for statistical analysis and treats categorical data as factors by design in most modeling packages. The native handling allows R to perform more efficient and statistically robust splits for the categorical data as it can evaluate all possible groupings of categories for a single split. Whereas Python’s scikit-learn requires the data to be in a numerical format. To use zip codes, we would have to use a pre-processing method like one-hot encoding. In conclusion, R does a better job of modelling zip code as a categorical variable than Python.
+
+**Suggestions for Implementing Decision Trees in Python With Prioper Categorical Handling**
 
 
-2. **R vs Python Implementation Differences:** When modelling zip code as a categorical variable, the output tree and feature importance would differ quite significantly had you used R as opposed to Python. Investigate why this is the case.  What does R offer that Python does not? Which language would you say does a better job of modelling zip code as a categorical variable? Can you quote the documentation at [https://scikit-learn.org/stable/modules/tree.html](https://scikit-learn.org/stable/modules/tree.html) suggesting a weakness in the Python implementation? If so, please provide a quote from the documentation.
-
-3. **Are There Any Suggestions for Implementing Decision Trees in Python With Prioper Categorical Handling?** Please poke around the Internet (AI is not as helpful with new libraries) for suggestions on how to implement decision trees in Python with better (i.e. not one-hot encoding) categorical handling.  Please provide a link to the source and a quote from the source.  There is not right answer here, but please provide a thoughtful answer, I am curious to see what you find.
 
 
 
